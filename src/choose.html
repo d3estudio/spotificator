@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Boilerplate: The web's most popular front-end template</title>
+        <meta name="description" content="HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites. Spend more time developing and less time reinventing the wheel.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css css/main.css -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <!-- endbuild -->
+
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <div class="wrap">
+
+            <section class="choose">
+                <img src="img/gif-transfer.gif" alt="Playlist Conversor" class="gif-transition">
+                <h1>Importar</h1>
+                <h2>De qual serviço você deseja importar suas playlists para o spotify?</h2>
+
+                <ul class="options">
+                    <li><a href="" class="button rdio">Rdio</a></li>
+                    <li><a href="" class="button deezer">Deezer</a></li>
+                    <li><a href="" class="button grooveshark">Grooveshark</a></li>
+                </ul>
+            </section>
+
+            <footer>
+                design and develop by <a href="http://d3.do">D3.do</a>
+            </footer>
+
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+         <script src="js/vendor/jquery.velocity.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+
+        <script type="text/javascript">
+        $('.options a').click(function(e) {
+
+            $(this).css({ 'background':'#494949', 'padding-left': '20px', 'font-size': '11px', 'display':'block', 'height' : '42px' } );
+            $(this).html('<img src="img/icon-load.gif" style="opacity:0;">').delay(300);
+            $(this).children('img').velocity({ opacity:1 }, { duration: 500, delay:300 });
+            e.preventDefault();
+
+        });
+
+        </script>
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
