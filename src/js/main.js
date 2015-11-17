@@ -517,12 +517,12 @@ function loadPlaylists(_service)
       _playlists = _response['playlists'];
 			constructPlaylists(_playlists);
 		} else {
-      window.location.href = 'erro.html';
+      window.location.href = 'erro.php';
     }
 	}
 	).fail( function (jqXHr, textStatus, errorThrown)
 	{
-		window.location.href = 'erro.html';
+		window.location.href = 'erro.php';
 	});
 }
 
@@ -562,12 +562,12 @@ function loadMusics(_playlist, _page)
           loadMusics(_playlist, _playlistCurrentMusics.length + 1);
         }
       } else {
-        window.location.href = 'erro.html';
+        window.location.href = 'erro.php';
       }
   }
   ).fail( function (jqXHr, textStatus, errorThrown)
   {
-      window.location.href = 'erro.html';
+      window.location.href = 'erro.php';
   });
 }
 
@@ -585,7 +585,7 @@ function loadFromSpotify(_playlist)
         if(_response['response'] && _response['response'] == 'success') {
             musicListButtonComplete(_response['link']);
         } else {
-          window.location.href = 'erro.html';
+          window.location.href = 'erro.php';
         }
 
         clearInterval(_musicsStatusInterval);
@@ -594,7 +594,7 @@ function loadFromSpotify(_playlist)
     ).fail( function (jqXHr, textStatus, errorThrown)
     {
         clearInterval(_musicsStatusInterval);
-        window.location.href = 'erro.html';
+        window.location.href = 'erro.php';
     });
 
     _musicsStatusInterval = setInterval(loadFromSpotifyStatus, 1500);

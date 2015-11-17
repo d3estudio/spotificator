@@ -10,7 +10,7 @@
             break;
         }
     ?>
-   <html lang="pt-br">
+   <html lang="<?= $lang['LANG_ATTR'] ?>">
     <head>
         <meta charset="utf-8">
         <title><?= $lang['PAGE_TITLE'] ?></title>

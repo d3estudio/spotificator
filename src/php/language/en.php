@@ -11,6 +11,7 @@ $lang = array();
 $lang['PAGE_TITLE'] = 'Spotificator | Export your playlists to Spotify';
 $lang['DESCRIPTION'] = 'Export your playlists from rdio and deezer to Spotify';
 $lang['KEYWORDS'] = 'export, import, spotify, rdio, deezzer';
+$lang['LANG_ATTR'] = 'en';
 
 // HTML
 
@@ -37,5 +38,9 @@ $lang['BUTTON_OPEN'] = 'Open Spotify';
 $lang['MUSIC_TEXT'] = ' musics';
 $lang['OF_TEXT'] = ' of ';
 
+//ERRO
+$lang['ERROR_TITLE'] = 'Spotificator | Service Unavailable';
+$lang['ERROR'] = 'Unavailable';
+$lang['ERROR_DESCRIPTION'] = 'Something going wrong. Try again in a few minutes';
 
 ?>

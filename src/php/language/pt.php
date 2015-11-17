@@ -11,6 +11,7 @@ $lang = array();
 $lang['PAGE_TITLE'] = 'Spotificator | Transfira suas playlists para o Spotify';
 $lang['DESCRIPTION'] = 'Transfira suas playlists do rdio e deezer para o spotify';
 $lang['KEYWORDS'] = 'transferir, importar, spotify, rdio, deezzer';
+$lang['LANG_ATTR'] = 'pt';
 
 // HTML
 
@@ -35,5 +36,10 @@ $lang['BUTTON_STEP'] = 'Continuar transfêrencia';
 $lang['BUTTON_OPEN'] = 'Abrir no Spotify';
 $lang['MUSIC'] = ' músicas';
 $lang['OF_TEXT'] = ' de ';
+
+//ERRO
+$lang['ERROR_TITLE'] = 'Spotificator | Serviço Indisponível';
+$lang['ERROR'] = 'Indisponível';
+$lang['ERROR_DESCRIPTION'] = 'Ocorreu algum problema durante a conexão com os outros serviços. Tente novamente daqui alguns instantes.';
 
 ?>
