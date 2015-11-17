@@ -158,7 +158,7 @@ function navigationStart(e) {
    	   			clickbutton = true;
    	   			//Type Effect
    	   			erase($_typeContainer);
-   	   			setTimeout( function() { type($_typeContainer, 'Importar'); }, 300);
+				setTimeout( function() { type($_typeContainer, IMPORT_TITLE ); }, 300);
    	   			//End Type effect
    	   			$_choose.velocity({ opacity: 1, marginTop: 0 }, {duration:800,  display: 'block', delay: 200});
    	   		}
@@ -305,12 +305,12 @@ function musicListButtonUpdate(_current) {
     var _total = _currentPlaylistTotal < 10 ? '0' + _currentPlaylistTotal : _currentPlaylistTotal;
     _current = _current < 10 ? '0' + _current : _current;
 
-    $('#btnSaveToSpotify').text(_current + ' de ' + _total + ' músicas');
+    $('#btnSaveToSpotify').text(_current + OF_TEXT + _total + MUSIC_TEXT);
 }
 
 function musicListButtonComplete(_link) {
     setTimeout(function(){
-        $('#btnSaveToSpotify').text('Abrir no Spotify');
+        $('#btnSaveToSpotify').text( BUTTON_OPEN );
         $('#btnSaveToSpotify').attr('href', _link);
         $('#btnSaveToSpotify').removeClass('waiting');
         $('#btnSaveToSpotify').addClass('end');
@@ -321,7 +321,7 @@ function musicListButtonComplete(_link) {
     $('.tip').velocity({opacity: 1}, { duration: 300, delay:500, display: 'block'});
     $('#instruction').velocity({opacity: 0}, { duration: 300, delay:300,
       complete: function() {
-          $('#instruction').html("Sua Playlist foi convertida<br/>Clique em 'Abrir no Spotify' abaixo");
+          $('#instruction').html( FINISH_TEXT );
           $('#instruction').velocity({opacity: 1}, { duration: 300, delay:200 });
       }
     });
@@ -362,9 +362,9 @@ function backToPlaylists(e) {
             $_slicedPlaylists.css('display', 'none');
             $_footer.css('display', 'none');
             $('.tip').css('display', 'none');
-            $('#instruction').html("Convertendo playlist para o spotify<br/>O procedimento pode durar alguns minutos");
-            $('.transferMusic').html("Transferir para o spotify");
-            $('.transferpart').html("Continuar transfêrencia");
+            $('#instruction').html( WAINTING_TEXT );
+            $('.transferMusic').html( BUTTON_TRASNFER );
+            $('.transferpart').html( BUTTON_STEP );
             erase($_typeContainer);
           }
         });
@@ -407,7 +407,7 @@ function constructPlaylists(playlists) {
 
     $("<a/>", {
         class: 'button transferMusic',
-        text: 'Transferir para o Spotify',
+        text: BUTTON_TRASNFER,
         'data-music': i,
         'data-name': playlists[i]['name'],
         'click': function() {
@@ -440,7 +440,7 @@ function constructPlaylistsSliced() {
 
     $("<a/>", {
         class: 'button transferpart',
-        text: 'Continuar Transfêrencia',
+        text: BUTTON_STEP,
         'data-music': i,
         'data-name': _playlistCurrentMusics[i]['name'],
         'click': function() {
@@ -520,12 +520,12 @@ function loadPlaylists(_service)
       _playlists = _response['playlists'];
 			constructPlaylists(_playlists);
 		} else {
-      window.location.href = 'erro.html';
+      window.location.href = 'erro.php';
     }
 	}
 	).fail( function (jqXHr, textStatus, errorThrown)
 	{
-		window.location.href = 'erro.html';
+		window.location.href = 'erro.php';
 	});
 }
 
@@ -565,12 +565,12 @@ function loadMusics(_playlist, _page)
           loadMusics(_playlist, _playlistCurrentMusics.length + 1);
         }
       } else {
-        window.location.href = 'erro.html';
+        window.location.href = 'erro.php';
       }
   }
   ).fail( function (jqXHr, textStatus, errorThrown)
   {
-      window.location.href = 'erro.html';
+      window.location.href = 'erro.php';
   });
 }
 
@@ -588,7 +588,7 @@ function loadFromSpotify(_playlist)
         if(_response['response'] && _response['response'] == 'success') {
             musicListButtonComplete(_response['link']);
         } else {
-          //window.location.href = 'erro.html';
+          window.location.href = 'erro.php';
         }
 
         clearInterval(_musicsStatusInterval);
@@ -597,7 +597,7 @@ function loadFromSpotify(_playlist)
     ).fail( function (jqXHr, textStatus, errorThrown)
     {
         clearInterval(_musicsStatusInterval);
-        //window.location.href = 'erro.html';
+        window.location.href = 'erro.php';
     });
 
     _musicsStatusInterval = setInterval(loadFromSpotifyStatus, 1500);

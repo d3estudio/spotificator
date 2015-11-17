@@ -1,8 +1,19 @@
 <!doctype html>
-<html lang="en-us">
+<?php
+    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    switch ($lang){
+    case "pt":
+        include("php/language/pt.php");
+        break;
+    default:
+        include("php/language/en.php");
+        break;
+    }
+?>
+<html lang="<?= $lang['LANG_ATTR'] ?>">
     <head>
         <meta charset="utf-8">
-        <title>Spotificator | Serviço Indisponível</title>
+        <title><?= $lang['ERROR_TITLE'] ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- build:css css/main.css -->
@@ -23,9 +34,9 @@
                 <line x1="11.2" y1="28.8" x2="28.8" y2="11.2"/>
                 <line x1="28.8" y1="28.8" x2="11.2" y2="11.2"/>
             </svg>
-            <h1>Indisponível</h1>
+            <h1><?= $lang['ERROR'] ?></h1>
             <section class="problem">
-                <h2>Ocorreu algum problema durante a conexção com os outros serviços. Tente novamente daqui alguns instantes.</h2>
+                <h2><?= $lang['ERROR_DESCRIPTION'] ?></h2>
 
             <footer>
                 design and develop by <a href="http://d3.do">D3.do</a>
@@ -35,12 +46,13 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-51239237-1', 'spotificator.com.br');
+          ga('send', 'pageview');
         </script>
     </body>
 </html>

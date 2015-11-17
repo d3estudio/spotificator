@@ -1,10 +1,21 @@
 <!doctype html>
-   <html lang="pt-br">
+    <?php
+        $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        switch ($lang){
+        case "pt":
+            include("php/language/pt.php");
+            break;
+        default:
+            include("php/language/en.php");
+            break;
+        }
+    ?>
+   <html lang="<?= $lang['LANG_ATTR'] ?>">
     <head>
         <meta charset="utf-8">
-        <title>Spotificator | Transfira suas playlists para o Spotify</title>
-        <meta name="description" content="Transfira suas playlists do rdio e deezer para o spotify">
-        <meta name="keywords" content="transferir, importar, spotify, rdio, deezzer">
+        <title><?= $lang['PAGE_TITLE'] ?></title>
+        <meta name="description" content="<?= $lang['DESCRIPTION'] ?>">
+        <meta name="keywords" content="<?= $lang['KEYWORDS'] ?>">
 
         <meta NAME="author" CONTENT="http://d3.do">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -13,8 +24,8 @@
 
         <!-- Facebook Share -->
         <meta property="og:image" content="http://www.spotificator.com.br/facebook-image.png">
-        <meta property="og:title" content="Spotificator | Transfira suas playlists">
-        <meta property="og:description" content="Transfira suas playlists do rdio e do deezer para o Spotify">
+        <meta property="og:title" content="<?= $lang['PAGE_TITLE'] ?>">
+        <meta property="og:description" content="<?= $lang['DESCRIPTION'] ?>">
 
         <!-- build:css css/main.css -->
         <link rel="stylesheet" href="css/normalize.css">
@@ -67,18 +78,17 @@
 
             <!-- Init -->
             <section class="init">
-                <h2>Transfira suas playlists para o Spotify</h2>
+                <h2><?= $lang['HEADLINE'] ?></h2>
 
                 <img src="img/logos-servicos.png" alt="Rdio, Deezer para Spotify" class="service-logos">
 
-                <!-- <a href="#" class="button start" id="start">Iniciar</a> -->
-                <a href="#" class="button start" id="start">Iniciar</a>
+                <a href="#" class="button start" id="start"><?= $lang['BUTTON_INIT'] ?></a>
             </section>
 
 
             <!-- Choose -->
              <section class="choose">
-                <h2>De qual serviço você deseja transferir suas playlists para o spotify?</h2>
+                <h2><?= $lang['CHOOSE_SERVICE'] ?></h2>
 
                 <ul class="options">
                     <li><a href="" class="button rdio">Rdio</a></li>
@@ -89,7 +99,7 @@
             <!-- List Playlist -->
             <section class="list-playlist">
                 <h2>
-                    Escolha a playlist que deseja transferir agora
+                    <?= $lang['CHOOSE_PLAYLIST'] ?>
                 </h2>
 
                 <ul class="playlists" id="playlists">
@@ -100,34 +110,32 @@
              <!-- Split Playlist -->
             <section class="sliced-playlist">
                 <h2>
-                    Uow! Você tem uma playlist enorme. Dividimos ela em partes, para convertermos corretamente.
+                    <?= $lang['CHOOSE_SPLITVIEW'] ?>
                 </h2>
 
                 <ul class="playlists" id="sliced-playlist">
                 </ul>
 
 
-                 <a href="#" id="back-again" class="back-button" style="">Voltar e converter<br/> outra playlist</a>
+                 <a href="#" id="back-again" class="back-button" style=""><?= $lang['BUTTON_BACK'] ?></a>
 
             </section>
 
             <!-- Convert -->
             <section class="convert">
                 <h2 id="instruction">
-                    Convertendo playlist para o spotify<br/>
-                    O procedimento pode durar alguns minutos
+                    <?= $lang['WAITING_PROCESS'] ?>
                 </h2>
                 <a href="" id="btnSaveToSpotify" class="button waiting"></a>
-                <p class="tip">Suas músicas irão abir no aplicativo<br/> do Spotify selecione as faixas e clique em<br/> "Adiconar a" > "Nova Playlist”<br/><br/>
-                Ou assita o passo a passo:<br/><br/>
-                <iframe width="416" height="310" src="//www.youtube.com/embed/GCQZCH9SS4Q" frameborder="0" allowfullscreen></iframe>
+                <p class="tip"><?= $lang['INSTRUCTIONS'] ?><br/><br/>
+                <iframe width="416" height="310" src="//www.youtube.com/embed/WqSkxHwAFgI" frameborder="0" allowfullscreen></iframe>
                 </p>
 
 
                 <ul class="musics">
                 </ul>
 
-                <a href="#" id="back-playlists" class="back-button" style="">Voltar e converter<br/> outra playlist</a>
+                <a href="#" id="back-playlists" class="back-button" style=""><?= $lang['BUTTON_BACK'] ?></a>
             </section>
 
             <footer>
@@ -139,6 +147,17 @@
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
         <script src="js/vendor/jquery.velocity.min.js"></script>
+
+        <script type="text/javascript">
+            var FINISH_TEXT = '<?= $lang["FINISH_TEXT"] ?>';
+            var IMPORT_TITLE = '<?= $lang["IMPORT_TITLE"] ?>';
+            var WAINTING_TEXT = '<?= $lang["WAINTING_TEXT"] ?>';
+            var BUTTON_TRASNFER = '<?= $lang["BUTTON_TRASNFER"] ?>';
+            var BUTTON_STEP = '<?= $lang["BUTTON_STEP"] ?>';
+            var BUTTON_OPEN = '<?= $lang["BUTTON_OPEN"] ?>';
+            var OF_TEXT = '<?= $lang["OF_TEXT"] ?>';
+            var MUSIC_TEXT = '<?= $lang["MUSIC_TEXT"] ?>';
+        </script>
 
         <script src="js/main.js"></script>
 
