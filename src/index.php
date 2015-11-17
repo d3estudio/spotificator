@@ -128,7 +128,7 @@
                 </h2>
                 <a href="" id="btnSaveToSpotify" class="button waiting"></a>
                 <p class="tip"><?= $lang['INSTRUCTIONS'] ?><br/><br/>
-                <iframe width="416" height="310" src="//www.youtube.com/embed/GCQZCH9SS4Q" frameborder="0" allowfullscreen></iframe>
+                <iframe width="416" height="310" src="//www.youtube.com/embed/WqSkxHwAFgI" frameborder="0" allowfullscreen></iframe>
                 </p>
 
 

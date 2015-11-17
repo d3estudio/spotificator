@@ -25,7 +25,7 @@ $lang['CHOOSE_SPLITVIEW'] = 'Uow! Você tem uma playlist enorme. Dividimos ela e
 $lang['BUTTON_BACK'] = 'Voltar e converter<br/> outra playlist';
 $lang['WAITING_PROCESS'] = 'Convertendo playlist para o spotify<br/>O procedimento pode durar alguns minutos';
 
-$lang['INSTRUCTIONS'] = 'Suas músicas irão abir no aplicativo<br/> do Spotify selecione as faixas e clique em<br/> "Adiconar a" > "Nova Playlist”<br/><br/>Ou assita o passo a passo:';
+$lang['INSTRUCTIONS'] = 'Suas músicas irão abir no aplicativo<br/> do Spotify web, clique em<br/> "Play on spotify”<br/><br/> e salve a lista de reprodução. Ou assita o passo a passo:';
 
 // JAVASCRIPT TEXT
 $lang['FINISH_TEXT'] = 'Sua Playlist foi convertida<br/>Clique em "Abrir no Spotify" abaixo';
@@ -34,7 +34,7 @@ $lang['WAINTING_TEXT'] = 'Convertendo playlist para o spotify<br/>O procedimento
 $lang['BUTTON_TRASNFER'] = 'Transferir para o spotify';
 $lang['BUTTON_STEP'] = 'Continuar transfêrencia';
 $lang['BUTTON_OPEN'] = 'Abrir no Spotify';
-$lang['MUSIC'] = ' músicas';
+$lang['MUSIC_TEXT'] = ' músicas';
 $lang['OF_TEXT'] = ' de ';
 
 //ERRO
