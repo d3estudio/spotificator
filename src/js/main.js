@@ -60,13 +60,12 @@ LISTENERS
 ------------------------------------------------------ */
 
 function addListeners() {
-	$("#start").click(function(e) { navigationStart(e); });
+	$("#start").click(function(e) { startSpotify(e) });
 	$(".rdio").click(function(e) { connectPopup(e, 'rdio'); waitingConnection($(this)); });
 	$(".deezer").click(function(e) { connectPopup(e, 'deezer'); waitingConnection($(this)); });
 	$("#back-playlists").click(function(e) { backToPlaylists(e); });
   $("#back-again").click(function(e) { _playlistsWasSliced = false; backToPlaylists(e); });
 }
-
 
 /* -------------------------------------------------
 MOTION / NAVIGATION
@@ -130,8 +129,12 @@ function erase(container) {
     }
 }
 
-function navigationStart(e) {
-	e.preventDefault();
+function startSpotify(e) {
+  e.preventDefault();
+  popupWindow('php/spotify_connect.php', 'spotify_connect', 655, 350);
+}
+
+function navigationStart() {
 
 	if (clickbutton == true) {
 
@@ -502,7 +505,7 @@ function connectPopupSuccess(jsonResp)
 {
   var obj = JSON.parse(jsonResp);
   _secretParams = obj.paramers;
-	setTimeout(function() { loadPlaylists(obj.service); }, 1000);
+  setTimeout(function() { loadPlaylists(obj.service); }, 1000);
 }
 
 function loadPlaylists(_service)

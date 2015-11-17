@@ -29,7 +29,6 @@ if (isset($_GET['code'])) {
     // print_r($playlist);
     // echo '</pre>';
     // exit;
-    ?><script>window.close();</script><?
 } else {
     $scopes = array(
         'scope' => array(
@@ -38,3 +37,15 @@ if (isset($_GET['code'])) {
     );
     header('Location: ' . $session->getAuthorizeUrl($scopes));
 }
+
+?>
+
+<script language="javascript">
+
+  <? if($_SESSION['spotify_token']) { ?>
+    window.opener.navigationStart();
+  <? } ?>
+
+  self.close();
+
+</script>
