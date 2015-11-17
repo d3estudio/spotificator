@@ -6,8 +6,8 @@ if (DEBUG) {
     error_reporting(E_ALL);
 }
 
-define('RDIO_CONSUMER_KEY', '735nnd2m5pu7efwvyr2smxn6');
-define('RDIO_CONSUMER_SECRET', 'Sk5n4EAHUs');
+define('RDIO_CONSUMER_KEY', 'si23k3mibzfupnozxogyquvc5a');
+define('RDIO_CONSUMER_SECRET', 'SKW1ZRQkWRRZrjwGL4aong');
 
 if (!DEBUG) {
     define('DEEZER_APP_ID', '137843');

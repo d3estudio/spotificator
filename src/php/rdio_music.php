@@ -2,15 +2,26 @@
 require_once 'config.php';
 require_once 'thirdparty/rdio.class.php';
 
+function post_to_rdio($url, $params) {
+  $curl = curl_init($url);
+  $postbody = http_build_query($params);
+  //curl_setopt($curl, CURLOPT_VERBOSE, TRUE);
+  curl_setopt($curl, CURLOPT_POST, TRUE);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $postbody);
+  curl_setopt($curl, CURLOPT_HTTPHEADER,
+    array('Content-type: application/x-www-form-urlencoded'));
+  $body = curl_exec($curl);
+  curl_close($curl);
+  return $body;
+}
 
 session_start();
-if (isset($_POST['oauth_token']) AND isset($_POST['oauth_token_secret'])) {
+if (isset($_POST['oauth_token'])) {
   $oauth_token = $_POST['oauth_token'];
-  $oauth_token_secret = $_POST['oauth_token_secret'];
 }
-else if (isset($_SESSION['oauth_token']) AND isset($_SESSION['oauth_token_secret'])) {
+else if (isset($_SESSION['oauth_token'])) {
   $oauth_token = $_SESSION['oauth_token'];
-  $oauth_token_secret = $_SESSION['oauth_token_secret'];
 }
 else {
   echo json_encode(array('response'=>'error', 'message_error'=>'token_undefined'));
@@ -20,7 +31,7 @@ session_write_close();
 
 
 # create an instance of the Rdio object with our consumer credentials
-$rdio = new Rdio(array(RDIO_CONSUMER_KEY, RDIO_CONSUMER_SECRET), array($oauth_token, $oauth_token_secret));
+// $rdio = new Rdio(array(RDIO_CONSUMER_KEY, RDIO_CONSUMER_SECRET), array($oauth_token, $oauth_token_secret));
 
 
 if (isset($_POST['playlist']['id'])) {
@@ -34,7 +45,7 @@ else {
 
 
 if (isset($_POST['page']) AND $_POST['page'] > 0) $page = $_POST['page'];
-else $page = 160;
+else $page = 1;
 $start = ($page - 1) * MUSICS_COUNT_LIMIT;
 
 
@@ -43,7 +54,8 @@ $musics = array();
 $pagination = false;
 try {
   if ($playlist_id AND $playlist_id != '0') {
-    $playlists = $rdio->call('get', array('keys' => $playlist_id, 'extras' => 'tracks'));
+    $playlists = json_decode(post_to_rdio('https://services.rdio.com/api/1/?access_token='.$oauth_token, array('method' => 'get', 'keys' => $playlist_id, 'extras' => 'tracks' )));
+    // $playlists = $rdio->call('get', array('keys' => $playlist_id, 'extras' => 'tracks'));
     if ($playlists AND isset($playlists->result) AND isset($playlists->result->{$playlist_id}) AND isset($playlists->result->{$playlist_id}->tracks) AND sizeof($playlists->result->{$playlist_id}->tracks) > 0) {
       $playlist = $playlists->result->{$playlist_id};
       for ($i = $start; $i < sizeof($playlist->tracks); $i++)
@@ -60,7 +72,8 @@ try {
     }
   }
   else {
-    $collection = $rdio->call('getTracksInCollection', array('start' => $start, 'count' => MUSICS_COUNT_LIMIT));
+    $collection = json_decode(post_to_rdio('https://services.rdio.com/api/1/?access_token='.$oauth_token, array('method' => 'getTracksInCollection', 'start' => $start, 'count' => MUSICS_COUNT_LIMIT)));
+    // $collection = $rdio->call('getTracksInCollection', array('start' => $start, 'count' => MUSICS_COUNT_LIMIT));
     if ($collection AND isset($collection->status) AND $collection->status == 'ok' AND isset($collection->result)) {
       $playlist = true;
       foreach ($collection->result as $music) {
@@ -76,7 +89,9 @@ try {
       $playlists = false;
     }
   }
-} catch (Exception $e) {}
+} catch (Exception $e) {
+  error_log($e);
+}
 if(!$playlist) {
   echo json_encode(array('response'=>'error', 'message_error'=>'playlist_not_found'));
   exit();

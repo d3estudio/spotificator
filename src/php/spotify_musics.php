@@ -45,7 +45,6 @@ foreach ($playlist_musics as $music)
     session_write_close();
 }
 if(sizeof($music_ids) > 0) {
-    $response['link'] = 'spotify:trackset:' . urlencode($playlist_name) . ':' . implode(',', $music_ids);
+    $response['link'] = 'http://open.spotify.com/trackset/' . urlencode($playlist_name) . '/' . implode(',', $music_ids);
 }
-
 echo json_encode($response);
