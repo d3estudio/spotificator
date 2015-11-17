@@ -163,6 +163,9 @@ function navigationStart(e) {
    	   			$_choose.velocity({ opacity: 1, marginTop: 0 }, {duration:800,  display: 'block', delay: 200});
    	   		}
    	   	});
+
+        popupWindow('php/spotify_connect.php', 'spotify_connect', 655, 350);
+
    	}
 }
 
@@ -233,7 +236,7 @@ function navigationPlaylistsSliced(nameplaylist) {
           $_typeContainer.css('height', 'auto' );
           setTimeout( function() { type($_typeContainer, nameplaylist); }, 100);
           //End Type effect
-          $_slicedPlaylists.velocity({ opacity: 1, marginTop: 0 }, {duration:800,  display: 'block', delay:200, 
+          $_slicedPlaylists.velocity({ opacity: 1, marginTop: 0 }, {duration:800,  display: 'block', delay:200,
             complete: function() {
               $_footer.css({ 'position': 'relative', 'padding': '50px 5px 5px 5px', 'opacity': '1', 'display': 'block' });
               $("#back-playlists").text("Voltar e converter outra parte");
@@ -585,7 +588,7 @@ function loadFromSpotify(_playlist)
         if(_response['response'] && _response['response'] == 'success') {
             musicListButtonComplete(_response['link']);
         } else {
-          window.location.href = 'erro.html';
+          //window.location.href = 'erro.html';
         }
 
         clearInterval(_musicsStatusInterval);
@@ -594,7 +597,7 @@ function loadFromSpotify(_playlist)
     ).fail( function (jqXHr, textStatus, errorThrown)
     {
         clearInterval(_musicsStatusInterval);
-        window.location.href = 'erro.html';
+        //window.location.href = 'erro.html';
     });
 
     _musicsStatusInterval = setInterval(loadFromSpotifyStatus, 1500);

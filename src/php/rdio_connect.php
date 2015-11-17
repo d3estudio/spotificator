@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', -1);
 session_start();
 
 require_once 'config.php';
@@ -44,6 +45,9 @@ if ($_GET['code']) {
   error_log($authorize_url);
   header('Location: '.$authorize_url);
 }
+
+
+
 ?>
 
 <script language="javascript">

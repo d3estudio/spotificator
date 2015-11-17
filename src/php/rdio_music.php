@@ -45,7 +45,7 @@ else {
 
 
 if (isset($_POST['page']) AND $_POST['page'] > 0) $page = $_POST['page'];
-else $page = 1;
+else $page = 180;
 $start = ($page - 1) * MUSICS_COUNT_LIMIT;
 
 
