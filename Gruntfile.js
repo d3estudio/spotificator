@@ -138,7 +138,7 @@ module.exports = function (grunt) {
         htmlmin: {
             build: {
                 files: {
-                    '<%= settings.dir.dist %>/index.html': '<%= settings.dir.dist %>/index.html'
+                    '<%= settings.dir.dist %>/index.php': '<%= settings.dir.dist %>/index.php'
                     // DO NOT minify the 404 page! (the page needs to have more
                     // than 512 bytes in order for IE to display it)
                     // http://www.404-error-page.com/404-error-page-too-short-problem-microsoft-ie.shtml
@@ -170,13 +170,13 @@ module.exports = function (grunt) {
         usemin: {
             // List of files for which to update asset references
             css: '<%= settings.dir.dist %>/css/*.css',
-            html: '<%= settings.dir.dist %>/index.html'
+            html: '<%= settings.dir.dist %>/index.php'
         },
 
         useminPrepare: {
             // List of HTML files from which to process the usemin blocks
             // https://github.com/yeoman/grunt-usemin#blocks
-            html: '<%= settings.dir.src %>/index.html',
+            html: '<%= settings.dir.src %>/index.php',
 
             // Workflow configurations:
             // https://github.com/yeoman/grunt-usemin#flow

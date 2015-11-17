@@ -25,7 +25,7 @@ $lang['CHOOSE_SPLITVIEW'] = 'Whoa! That\'s a huge playlist. We had to split it i
 $lang['BUTTON_BACK'] = 'Back and export<br/> another playlist';
 $lang['WAITING_PROCESS'] = 'Exporting playlist to Spotify<br/>This can take a while';
 
-$lang['INSTRUCTIONS'] = 'Your songs will be open in the<br/> do Spotify web app, click on "Play on spotify”<br/><br/> and save your queue. Or watch the step-by-step:';
+$lang['INSTRUCTIONS'] = 'Your songs will be open in the<br/> do Spotify web app, click on "Play on spotify” and save your queue.<br/><br/> Or watch the step-by-step:';
 
 // JAVASCRIPT TEXT
 $lang['FINISH_TEXT'] = 'Your Playlist was exported<br/>Hit "Open Spotify" bellow';
