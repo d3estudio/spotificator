@@ -127,9 +127,9 @@
                     <?= $lang['WAITING_PROCESS'] ?>
                 </h2>
                 <a href="" id="btnSaveToSpotify" class="button waiting"></a>
-                <p class="tip"><?= $lang['INSTRUCTIONS'] ?><br/><br/>
-                <iframe width="416" height="310" src="//www.youtube.com/embed/WqSkxHwAFgI" frameborder="0" allowfullscreen></iframe>
-                </p>
+                <!--<p class="tip"><?= $lang['INSTRUCTIONS'] ?><br/><br/>-->
+                <!--<iframe width="416" height="310" src="//www.youtube.com/embed/WqSkxHwAFgI" frameborder="0" allowfullscreen></iframe>
+                </p>-->
 
 
                 <ul class="musics">
