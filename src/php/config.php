@@ -1,6 +1,6 @@
 <?php
 
-define('DEBUG', true);
+define('DEBUG', false);
 if (DEBUG) {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
@@ -15,7 +15,7 @@ define('SPOTIFY_CONSUMER_SECRET', '5ebddfff15d34831aff4ea50004c2ccf');
 if (DEBUG) {
     define('SPOTIFY_REDIRECT_URL', 'http://localhost/spotificator/src/php/spotify_connect.php');
 }else{
-    define('SPOTIFY_REDIRECT_URL', 'http://www.spotificator.com.br/spotify_connect.php');
+    define('SPOTIFY_REDIRECT_URL', 'http://www.spotificator.com.br/php/spotify_connect.php');
 }
 
 if (!DEBUG) {
